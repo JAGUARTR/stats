@@ -1,0 +1,16 @@
+google colab
+
+!pip install pyspark
+
+from pyspark.sql import SparkSession 
+spark = SparkSession.builder.master("local[*]").appName("MapReduceExample").getOrCreate() sc = spark.sparkContext
+
+WordPairs = WordsCount.map(lambda word: (word, 1)) 
+WordPairs.take(10) # Display first 10 pairs
+
+DistinctWordsCount = WordPairs.reduceByKey(lambda a, b: a + b) 
+print("Distinct Words:", DistinctWordsCount.count())
+
+DistinctWordsCount.collect()
+
+SortedWordsCount = DistinctWordsCount.map(lambda a: (a[1], a[0])).sortByKey(False) SortedWordsCount.top(5)

@@ -1,0 +1,32 @@
+SQL CREATE TABLE queries to represent entities and relationships. 
+CREATE TABLE Patient ( 
+Pat_id INT PRIMARY KEY, 
+PName VARCHAR(50), 
+PDiagnosis VARCHAR(100), 
+PAddress VARCHAR(100), 
+Hos_id INT, 
+FOREIGN KEY (Hos_id) REFERENCES Hospital(Hos_id) 
+); 
+
+CREATE TABLE Hospital ( 
+Hos_id INT PRIMARY KEY, 
+HName VARCHAR(50), 
+HAddress VARCHAR(100), 
+HCity VARCHAR(50) 
+); 
+
+CREATE TABLE Doctor ( 
+Doc_id INT PRIMARY KEY, 
+DName VARCHAR(50), 
+Qualification VARCHAR(50), 
+Salary DECIMAL(10,2), 
+Hos_id INT, 
+FOREIGN KEY (Hos_id) REFERENCES Hospital(Hos_id) 
+); 
+
+CREATE TABLE MedicalRecord ( 
+Precord_id INT PRIMARY KEY, 
+Date_of_examination DATE, 
+Problem VARCHAR(100), 
+Pat_id INT, 
+FOREIGN KEY (Pat_id) REFERENCES Patient(Pat_id) );
