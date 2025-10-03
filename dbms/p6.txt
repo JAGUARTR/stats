@@ -1,0 +1,81 @@
+PING
+
+1. Create 
+
+SET student:101:name "Shrinesh" 
+SET student:101:course "BMS" 
+SET student:102:name "Shweta" 
+SET student:102:course "AI" 
+SET student:103:name "Kiran" 
+SET student:103:course "DBMS"
+
+2. Read (Retrieve Records) 
+GET student:101:name 
+GET student:102:course
+
+
+3. Update (Modify Records) 
+SET student:103:course "Deep Learning"
+
+4. Delete (Remove Data) 
+DEL student:102:course 
+DEL student:103:name 
+
+CRUD with HM 
+1. Create (Insert 5 New Student Records) 
+HMSET student:201 id 201 name "Amit" course "Data Science" 
+HMSET student:202 id 202 name "Sneha" course "Artificial Intelligence"
+HMSET student:203 id 203 name "Vikram" course "Machine Learning" 
+HMSET student:204 id 204 name "Pooja" course "Operating Systems" 
+HMSET student:205 id 205 name "Rohan" course "Computer Networks"
+
+
+2. Read (Retrieve Records)  
+HGETALL student:201
+
+
+Get only the name of student 202 
+HGET student:202 name
+
+Get multiple fields (id and course) of student 203 
+HMGET student:203 id course
+
+Show all keys (all students
+
+KEYS student:*
+
+3. Update
+
+HSET student:201 course "Cloud Computing"
+
+HSET student:205 name "Rohan Sharma"
+
+4. Delete
+
+HDEL student:204 course
+
+DEL student:203
+
+EXISTS student:203
+
+
+
+1. KEYS 
+
+KEYS student:*
+
+2. EXISTS 
+
+EXISTS student:201
+
+3. TYPE 
+
+TYPE student:201
+
+4. EXPIRE 
+
+EXPIRE student:202 60
+
+5. TTL (Time To Live)
+TTL student:202
+
